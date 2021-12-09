@@ -598,7 +598,7 @@
 #define COOLER_FAN_PIN -1
 
 #define EXTRUDER_AUTO_FAN_TEMPERATURE 50
-#define EXTRUDER_AUTO_FAN_SPEED 178 // 70% 
+#define EXTRUDER_AUTO_FAN_SPEED 128 // 50%
 #define CHAMBER_AUTO_FAN_TEMPERATURE 30
 #define CHAMBER_AUTO_FAN_SPEED 255
 #define COOLER_AUTO_FAN_TEMPERATURE 18
@@ -1172,7 +1172,7 @@
 //#define MICROSTEP32 HIGH,LOW,HIGH
 
 // Microstep settings (Requires a board with pins named X_MS1, X_MS2, etc.)
-#define MICROSTEP_MODES { 64, 64, 64, 64, 64, 64 } // [1,2,4,8,16]
+#define MICROSTEP_MODES { 16, 16, 16, 16, 16, 16 } // [1,2,4,8,16]
 
 /**
  *  @section  stepper motor current
@@ -2050,8 +2050,8 @@
  * Use M871 to set temperature/offset values manually.
  * For more details see https://marlinfw.org/docs/features/probe_temp_compensation.html
  */
-//#define PTC_PROBE    // Compensate based on probe temperature
-//#define PTC_BED      // Compensate based on bed temperature
+#define PTC_PROBE    // Compensate based on probe temperature
+#define PTC_BED      // Compensate based on bed temperature
 //#define PTC_HOTEND   // Compensate based on hotend temperature
 
 #if ANY(PTC_PROBE, PTC_BED, PTC_HOTEND)
@@ -2657,7 +2657,7 @@
   #if AXIS_IS_TMC(X)
     #define X_CURRENT       500        // (mA) RMS current. Multiply by 1.414 for peak current.
     #define X_CURRENT_HOME  350  // (mA) RMS current for sensorless homing
-    #define X_MICROSTEPS     64        // 0..256
+    #define X_MICROSTEPS     16        // 0..256
     #define X_RSENSE          0.11
     #define X_CHAIN_POS      -1        // -1..0: Not chained. 1: MCU MOSI connected. 2: Next in chain, ...
     //#define X_INTERPOLATE  true      // Enable to override 'INTERPOLATE' for the X axis
@@ -2675,7 +2675,7 @@
   #if AXIS_IS_TMC(Y)
     #define Y_CURRENT       600
     #define Y_CURRENT_HOME  350
-    #define Y_MICROSTEPS     64
+    #define Y_MICROSTEPS     16
     #define Y_RSENSE          0.11
     #define Y_CHAIN_POS      -1
     //#define Y_INTERPOLATE  true
@@ -2693,7 +2693,7 @@
   #if AXIS_IS_TMC(Z)
     #define Z_CURRENT       450
     #define Z_CURRENT_HOME  (Z_CURRENT/2)
-    #define Z_MICROSTEPS     64
+    #define Z_MICROSTEPS     16
     #define Z_RSENSE          0.11
     #define Z_CHAIN_POS      -1
     //#define Z_INTERPOLATE  true
@@ -2755,7 +2755,7 @@
 
   #if AXIS_IS_TMC(E0)
     #define E0_CURRENT      550
-    #define E0_MICROSTEPS    64
+    #define E0_MICROSTEPS    16
     #define E0_RSENSE         0.11
     #define E0_CHAIN_POS     -1
     //#define E0_INTERPOLATE true
