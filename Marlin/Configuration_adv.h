@@ -607,7 +607,7 @@
 #define COOLER_FAN_PIN -1
 
 #define EXTRUDER_AUTO_FAN_TEMPERATURE 50
-#define EXTRUDER_AUTO_FAN_SPEED 150 //  Value ignored due to lack of pwm monitoring hardcoded in temprature.cpp!
+#define EXTRUDER_AUTO_FAN_SPEED 204 //  Value ignored due to lack of pwm monitoring hardcoded in temprature.cpp!
 #define CHAMBER_AUTO_FAN_TEMPERATURE 30
 #define CHAMBER_AUTO_FAN_SPEED 255
 #define COOLER_AUTO_FAN_TEMPERATURE 18
@@ -2666,7 +2666,7 @@
   #if AXIS_IS_TMC(X)
     #define X_CURRENT       500        // (mA) RMS current. Multiply by 1.414 for peak current.
     #define X_CURRENT_HOME  300  // (mA) RMS current for sensorless homing
-    #define X_MICROSTEPS     16        // 0..256
+    #define X_MICROSTEPS     32        // 0..256
     #define X_RSENSE          0.11
     #define X_CHAIN_POS      -1        // -1..0: Not chained. 1: MCU MOSI connected. 2: Next in chain, ...
     //#define X_INTERPOLATE  true      // Enable to override 'INTERPOLATE' for the X axis
@@ -2682,9 +2682,9 @@
   #endif
 
   #if AXIS_IS_TMC(Y)
-    #define Y_CURRENT       600
+    #define Y_CURRENT       550
     #define Y_CURRENT_HOME  300
-    #define Y_MICROSTEPS     16
+    #define Y_MICROSTEPS     32
     #define Y_RSENSE          0.11
     #define Y_CHAIN_POS      -1
     //#define Y_INTERPOLATE  true
@@ -2700,16 +2700,16 @@
   #endif
 
   #if AXIS_IS_TMC(Z)
-    #define Z_CURRENT       450
+    #define Z_CURRENT       430
     #define Z_CURRENT_HOME  (Z_CURRENT/2)
-    #define Z_MICROSTEPS     16
+    #define Z_MICROSTEPS     32
     #define Z_RSENSE          0.11
     #define Z_CHAIN_POS      -1
     //#define Z_INTERPOLATE  true
   #endif
 
   #if AXIS_IS_TMC(Z2)
-    #define Z2_CURRENT      450
+    #define Z2_CURRENT      430
     #define Z2_CURRENT_HOME (Z2_CURRENT/2)
     #define Z2_MICROSTEPS    Z_MICROSTEPS
     #define Z2_RSENSE         0.11
@@ -2905,12 +2905,12 @@
    * Use Trinamic's ultra quiet stepping mode.
    * When disabled, Marlin will use spreadCycle stepping mode.
    */
-  #define STEALTHCHOP_XY
-  #define STEALTHCHOP_Z
+  //#define STEALTHCHOP_XY
+  //#define STEALTHCHOP_Z
   //#define STEALTHCHOP_I
   //#define STEALTHCHOP_J
   //#define STEALTHCHOP_K
-  #define STEALTHCHOP_E
+  //#define STEALTHCHOP_E
 
   /**
    * Optimize spreadCycle chopper parameters by using predefined parameter sets
@@ -2927,7 +2927,7 @@
    * Define your own with:
    * { <off_time[1..15]>, <hysteresis_end[-3..12]>, hysteresis_start[1..8] }
    */
-  #define CHOPPER_TIMING CHOPPER_DEFAULT_24V        // All axes (override below)
+  #define CHOPPER_TIMING CHOPPER_PRUSAMK3_24V        // All axes (override below)
   //#define CHOPPER_TIMING_X  CHOPPER_TIMING        // For X Axes (override below)
   //#define CHOPPER_TIMING_X2 CHOPPER_TIMING_X
   //#define CHOPPER_TIMING_Y  CHOPPER_TIMING        // For Y Axes (override below)
@@ -3053,7 +3053,7 @@
    * Beta feature!
    * Create a 50/50 square wave step pulse optimal for stepper drivers.
    */
-  //#define SQUARE_WAVE_STEPPING
+  #define SQUARE_WAVE_STEPPING
 
   /**
    * Enable M122 debugging command for TMC stepper drivers.

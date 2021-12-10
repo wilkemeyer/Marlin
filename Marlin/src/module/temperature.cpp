@@ -938,8 +938,8 @@ int16_t Temperature::getHeaterPower(const heater_id_t heater_id) {
       #if BOTH(HAS_FANCHECK, HAS_PWMFANCHECK)
         #define _AUTOFAN_SPEED() fan_check.is_measuring() ? 255 : EXTRUDER_AUTO_FAN_SPEED
       #else
-        // FWI: mod MK3s - limit autofan speed to 120. ~ 47%
-        #define _AUTOFAN_SPEED() 150
+        // FWI: mod MK3s - limit autofan speed to 204. ~ 80%~
+        #define _AUTOFAN_SPEED() 204
       #endif
       #define _AUTOFAN_CASE(N) case N: _UPDATE_AUTO_FAN(E##N, fan_on, _AUTOFAN_SPEED()); break
 
